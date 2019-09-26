@@ -21,6 +21,8 @@ python manage.py makemigrations
 python manage.py migrate
 # 创建超级管理员
 python manage.py createsuperuser
+# 运行
+python manage.py runserver 0.0.0.0:8000
 ```
 
 - vue
