@@ -17,6 +17,8 @@ class Vehicles_Record(models.Model):
     vehicle_type    = models.CharField(max_length=50)
     plate_no        = models.CharField(max_length=254)
     price           = models.FloatField()
+    number          = models.IntegerField(default=1)
+    totle           = models.FloatField(default=0)
     status          = models.CharField(max_length=20,blank=True)
     comment         = models.CharField(max_length=254,blank=True)
     recorder        = models.CharField(max_length=20,blank=True)

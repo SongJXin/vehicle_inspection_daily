@@ -89,7 +89,7 @@ export default {
           }
         },
         legend: {
-          data: this.legendData
+          data: []
         },
         grid: {
           left: '3%',
@@ -131,6 +131,9 @@ export default {
           series[series.length] = serie
         }
         myChart.setOption({
+          legend: {
+            data: _this.legendData
+          },
           series: series
         })
       })

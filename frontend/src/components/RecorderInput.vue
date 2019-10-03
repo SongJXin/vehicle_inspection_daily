@@ -13,6 +13,9 @@
         <mu-form-item prop="price" label="价格" help-text="" :rules="unNoneRules">
           <mu-text-field prop="price" v-model="form.price" ></mu-text-field>
         </mu-form-item>
+        <mu-form-item prop="number" label="数量" help-text="" :rules="unNoneRules">
+          <mu-text-field prop="number" v-model="form.number" ></mu-text-field>
+        </mu-form-item>
         <mu-form-item prop="status" label="状态" :rules="unNoneRules">
           <mu-radio v-model="form.status" value="通过" label="通过"></mu-radio>
           <mu-radio v-model="form.status" value="未通过" label="未通过"></mu-radio>
@@ -69,7 +72,8 @@ export default {
         status: '通过',
         date: this.nowdate(),
         comment: '',
-        recorder: ''
+        recorder: '',
+        number: '1'
       },
       labelPosition: 'left',
       unNoneRules: [

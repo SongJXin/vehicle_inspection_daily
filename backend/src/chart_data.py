@@ -13,7 +13,7 @@ def get_one_month_number():
     today = date.today()
     oneMonth = datetime.timedelta(days=31)
     lastMonth = today - oneMonth
-    vrobjects = models.Vehicles_Record.objects.filter(date__range=(lastMonth, today)).values("date","vehicle_type").annotate(count=Count("id"))
+    vrobjects = models.Vehicles_Record.objects.filter(date__range=(lastMonth, today)).values("date","vehicle_type").annotate(count=Sum("number"))
     for vrobject in vrobjects:
         diffDay =30 - (today - vrobject['date']).days
         result[vrobject['vehicle_type']][diffDay] = vrobject["count"]
@@ -27,7 +27,7 @@ def get_one_month_totle_price():
     today = date.today()
     oneMonth = datetime.timedelta(days=31)
     lastMonth = today - oneMonth
-    vrobjects = models.Vehicles_Record.objects.filter(date__range=(lastMonth, today)).values("date","vehicle_type").annotate(totle=Sum('price'))
+    vrobjects = models.Vehicles_Record.objects.filter(date__range=(lastMonth, today)).values("date","vehicle_type").annotate(totle=Sum('totle'))
     for vrobject in vrobjects:
         diffDay = 30 - (today - vrobject['date']).days
         result[vrobject['vehicle_type']][diffDay] = vrobject["totle"]

@@ -7,10 +7,14 @@ from django.db.models import Sum
 import time
 def create(request):
     body = simplejson.loads(request.body)
+    price = body["price"]
+    number = int(body["number"])
     return models.Vehicles_Record.objects.create(
         plate_no=body["plate_no"],
         vehicle_type=body["vehicle_type"],
-        price=body["price"],
+        price=price,
+        number=number,
+        totle=price * number,
         status=body["status"],
         date=body["date"],
         comment=body["comment"],
@@ -20,7 +24,6 @@ def update(request):
     pass
 def delete(request):
     body = simplejson.loads(request.body)
-    print(body)
     return models.Vehicles_Record.objects.filter(id=body['id']).delete()
 def select(request):
     body = simplejson.loads(request.body)
@@ -74,6 +77,6 @@ def collect(request):
     datestr = datestr.replace("year","年").replace("month","月").replace("day","日")
     recodersObject = models.Vehicles_Record.objects.\
         filter(date__range=(fromdate, todate)).\
-        values("vehicle_type","price").annotate(count=Count("id"),totle=Sum("price"))
-    totle = models.Vehicles_Record.objects.filter(date__range=(fromdate, todate)).all().aggregate(totle=Sum("price"))
+        values("vehicle_type","price").annotate(count=Sum("number"),totle=Sum("totle"))
+    totle = models.Vehicles_Record.objects.filter(date__range=(fromdate, todate)).all().aggregate(totle=Sum("totle"))
     return recodersObject,totle,datestr

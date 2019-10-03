@@ -44,6 +44,8 @@
           <td>{{scope.row.plate_no}}</td>
           <td class="is-left">{{scope.row.vehicle_type}}</td>
           <td class="is-right">{{scope.row.price}}</td>
+          <td class="is-right">{{scope.row.number}}</td>
+          <td class="is-right">{{scope.row.totle}}</td>
           <td class="is-left">{{scope.row.status}}</td>
           <td class="is-right">{{scope.row.date}}</td>
           <td class="is-left">{{scope.row.comment}}</td>
@@ -130,12 +132,15 @@
           vehicle_type: '',
           status: '',
           fromdate: '',
-          todate: ''
+          todate: '',
+          number: ''
         },
         columns: [
           {title: '车牌号', width: 150, name: 'plate_no'},
           {title: '车辆类型', name: 'vehicle_type', width: 100, align: 'center', sortable: true},
           {title: '价格(元)', name: 'price', width: 100, align: 'center', sortable: true},
+          {title: '数量', name: 'number', width: 100, align: 'center', sortable: true},
+          {title: '总额', name: 'totle', width: 100, align: 'center', sortable: true},
           {title: '状态', name: 'status', width: 100, align: 'left', sortable: true},
           {title: '日期', name: 'date', width: 126, align: 'left', sortable: true},
           {title: '备注', name: 'comment',  align: 'center', sortable: true}
@@ -148,7 +153,9 @@
             price: '10',
             status: '通过',
             date: '2019-09-18',
-            comment: ''
+            comment: '',
+            totle: '10',
+            number: '1'
           }
         ]
       }
